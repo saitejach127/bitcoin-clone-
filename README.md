@@ -7,7 +7,7 @@ proof of work algorithm implimented
 <li>clone the project</li>
 <li>Run it in your shell</li>
 <li> use in built functions</li>
-<li> create ransactions <li>
+<li> create Transactions </li>
 <li> mine pending transactions etc..</li>
 </ol>
 
