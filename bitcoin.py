@@ -25,6 +25,7 @@ class Block:
         
 
     def mineBlock(self):
+        print("calculating hash\n Time depends on ur cpu or gpu speed")
         while True:
             self.val = self.val + 1
             a = str(self.transaction[0].fromAdd) + str(self.transaction[0].toAdd) + str(self.transaction[0].amount) + str(self.date) + str(self.val)
@@ -33,16 +34,11 @@ class Block:
             if( hash_curr[:self.difficulty] == str(0)*self.difficulty ):
                 self.hash = hash_curr
                 break
-            
-            
-            
-
 
 class Blockchain:
     def __init__(self):
         self.chain = [Block([Transaction("", "system", 21000000)], time.time())]
         self.pendingTransaction = []
-        self.users = []
 
     def minepending(self):
         minerAdd = input("Enter your name: ")
@@ -56,8 +52,7 @@ class Blockchain:
 
             self.pendingTransaction = [Transaction("system", minerAdd, 12.5)]
             print("Wait Until someone mines ur transaction")
-            self.users.append(minerAdd)
-
+            
         else:
             print("Dont enter next time")
 
@@ -66,8 +61,6 @@ class Blockchain:
 
         if (balance >= transaction.amount):
             self.pendingTransaction.append(transaction)
-            self.users.append(transaction.fromAdd)
-            self.users.append(transaction.toAdd)
 
         else:
             print("No Balance")
@@ -98,10 +91,7 @@ class Blockchain:
                     balance = balance + j.amount
         
         return balance
-
-    def getUsers(self):
-        print(self.users)
-
+    
 
 
 coin = Blockchain()
