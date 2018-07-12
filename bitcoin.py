@@ -45,13 +45,15 @@ class Blockchain:
         print('What is 1+1 ')
         k = int(input())
         if k == 2:
-            print(len(self.pendingTransaction))
-            block = Block(self.pendingTransaction, time.time(), str(self.chain[len(self.chain) - 1].hash))
-            block.mineBlock()
-            self.chain.append(block)
+            if len(self.pendingTransaction) >=1:
+                block = Block(self.pendingTransaction, time.time(), str(self.chain[len(self.chain) - 1].hash))
+                block.mineBlock()
+                self.chain.append(block)
 
-            self.pendingTransaction = [Transaction("system", minerAdd, 12.5)]
-            print("Wait Until someone mines ur transaction")
+                self.pendingTransaction = [Transaction("system", minerAdd, 12.5)]
+                print("Wait Until someone mines ur transaction")
+            else :
+                print("create some transactions")
             
         else:
             print("Dont enter next time")
@@ -96,4 +98,3 @@ class Blockchain:
 
 coin = Blockchain()
 
-coin.check()
